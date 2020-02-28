@@ -9,7 +9,10 @@ class NgStore<T> {
   T get state => _store.state;
 
   Stream<S> select<S>(S Function(T state) selector) {
-    return _store.onChange.map(selector).startWith(selector(_store.state)).distinct();
+    return _store.onChange
+      .map(selector)
+      .transform(StartWithStreamTransformer(selector(state)))
+      .distinct();
   }
 
   dynamic dispatch(dynamic action) {
