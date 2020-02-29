@@ -1,5 +1,5 @@
 name: angular_redux
-version: 1.0.0
+version: 1.1.0
 homepage: https://github.com/ranquild/angular_redux
 description: Redux bindings for Dart and Angular apps
 
@@ -7,8 +7,8 @@ environment:
   sdk: '>=2.0.0 <3.0.0'
 
 dependencies:
+  angular: '>=4.0.0 <6.0.0'
   redux: '>=3.0.0 <5.0.0'
-  rxdart: '>=0.22.0 <0.25.0'
 
 dev_dependencies:
   test: '>=1.0.0 <2.0.0'
