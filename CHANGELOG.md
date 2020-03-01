@@ -1,3 +1,7 @@
+# 1.1.2
+
+  * Do not call selector twice when state changes
+
 # 1.1.1
 
   * Add documentation
