@@ -26,7 +26,7 @@ class SelectPipe<T> implements PipeTransform, OnDestroy {
 
   @override
   void ngOnDestroy() {
-    if (_subscription == null) {
+    if (_subscription != null) {
       _subscription.cancel();
     }
   }
