@@ -52,3 +52,11 @@ Use `AsyncPipe` to render the stream in the template:
   {{ count | async }}
 </div>
 ```
+
+Use `dispatch` to dispatch an action to the underlying store:
+
+```dart
+void onClick() {
+  _store.dispatch(IncrementAction());
+}
+```
