@@ -1,10 +1,18 @@
+# 1.2.1
+
+  * Add SelectPipe example
+
+# 1.2.0
+
+  * Add SelectPipe
+
 # 1.1.3
 
-  * Add counter example
-
+  * Add documentation
+  
 # 1.1.2
 
-  * Do not call selector twice when state changes
+  * Add documentation
 
 # 1.1.1
 
@@ -12,7 +20,7 @@
 
 # 1.1.0
 
-  * Add SelectPipe
+  * Add documentation
 
 
 # 1.0.0

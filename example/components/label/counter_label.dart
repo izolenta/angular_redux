@@ -1,7 +1,7 @@
 import 'package:angular/angular.dart';
 
+import '../../models/counter_state.dart';
 import '../../pipes/counter_select_pipe.dart';
-import '../../services/counter_selector.dart';
 
 @Component(
   selector: 'counter-label',
@@ -12,7 +12,5 @@ import '../../services/counter_selector.dart';
   ],
 )
 class CounterLabelComponent {
-  final CounterSelector selector;
-
-  CounterLabelComponent(this.selector);
+  int getCount(CounterState state) => state.count;
 }
