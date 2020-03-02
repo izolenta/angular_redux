@@ -1,3 +1,7 @@
+# 1.1.3
+
+  * Add counter example
+
 # 1.1.2
 
   * Do not call selector twice when state changes

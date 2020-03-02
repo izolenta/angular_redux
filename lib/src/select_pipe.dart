@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:redux/redux.dart';
 
+@Pipe('select', pure: false)
 class SelectPipe<T> implements PipeTransform, OnDestroy {
   final Store<T> _store;
   final ChangeDetectorRef _detector;
@@ -14,16 +15,20 @@ class SelectPipe<T> implements PipeTransform, OnDestroy {
   SelectPipe(this._store, this._detector);
 
   dynamic transform(dynamic Function(T state) selector) {
-    _value = _selector == null ? selector(_store.state) : _value;
-    _selector = selector;
-    _subscription ??= _store.onChange.listen(_onStateChange);
+    if (_selector == null) {
+      _value = selector(_store.state);
+      _selector = selector;
+      _subscription = _store.onChange.listen(_onStateChange);
+    }
 
     return _value;
   }
 
   @override
   void ngOnDestroy() {
-    _subscription?.cancel();
+    if (_subscription != null) {
+      _subscription.cancel();
+    }
   }
 
   void _onStateChange(T state) {
