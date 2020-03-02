@@ -1,8 +1,16 @@
-# 1.2.1
+# # 1.3.2
+
+  * Fix SelectPipe double selector call
+
+# 1.3.1
+
+  * Fix SelectPipe subscription on destroy
+
+# 1.3.0
 
   * Add SelectPipe example
 
-# 1.2.0
+# 1.3.0
 
   * Add SelectPipe
 
