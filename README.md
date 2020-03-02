@@ -4,70 +4,59 @@ Bindings between Redux and Angular Dart.
 
 ## Quick Start
 
-Create a factory for your Store:
+Add a `Store<T>` factory:
 
 ```dart
-class CounterStoreFactory {
-  static Store<CounterState> createStore(/* ... */) {
-    return Store(/* ... */); 
-  }
-}
+Store<CounterState> createStore() => Store();
 ```
 
-Use `FactoryProvider` to make the Store injectable:
+Add a `NgStore<T>` factory:
 
 ```dart
-@Component(
-  /* ... */
-  providers: [
-    /* ... */
-    FactoryProvider(Store, CounterStoreFactory.createStore)
+NgStore<CounterState> createNgStore(Store<CounterState> store) => NgStore(store);
+```
+
+Make `Store<T>` and `NgStore<T>` injectable:
+
+```dart
+Module(
+  provides: [
+    FactoryProvider(Store, createStore),
+    FactoryProvider(NgStore, createNgStore),
   ],
 )
-class CounterAppComponent {
-  /* ... */
-}
 ```
 
-Extend base `SelectPipe` to specify the State type:
+Inject `NgStore<T>` into a component:
 
 ```dart
-@Pipe('select', pure: false)
-class CounterSelectPipe extends SelectPipe<CounterState> {
-  CounterSelectPipe(Store<CounterState> store, ChangeDetectorRef detector) : super(store, detector);
-}
+final NgStore<CounterState> _store;
+
+CounterApp(this._store);
 ```
 
-Use this pipe in your components:  
+Use `select<S>` function to transform state into stream:
 
 ```dart
-@Component(
-  /* ... */
-  pipes: [
-    CounterSelectPipe,
-  ],
-)
-class CounterAppComponent {
-  /* ... */
+Stream<int> count;
+
+void ngOnInit() {
+  count = _store.select((state) => state.count);
 }
 ```
 
-Add a `selector` method in the component to select a value from the Store:
-
-```dart
-class CounterAppComponent {
-  /* ... */
-
-  int getCount(CounterState state) => state.count;
-}
-```
-
-Use `select` pipe in Angular templates to extract a value from the Store:
+Use `AsyncPipe` to render the stream in the template:
 
 ```html
 <div>
-  {{ getCount | select }}
+  {{ count | async }}
 </div>
 ```
 
-Component will be marked for check automatically when the State changes and the `selector` returns new value.
+Use `dispatch` to dispatch an action to the underlying store:
+
+```dart
+void onClick() {
+  _store.dispatch(IncrementAction());
+}
+```

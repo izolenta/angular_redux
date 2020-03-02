@@ -1,22 +1,18 @@
-# 1.2.2
-
-  * Use selector in SelectPipe example
-
-# 1.2.1
-
-  * Add SelectPipe example
-
 # 1.2.0
 
-  * Add SelectPipe
+  * Add NgStore
+
+# 1.1.4
+
+  * Add documentation
 
 # 1.1.3
 
   * Add documentation
-  
+
 # 1.1.2
 
-  * Add documentation
+  * Add documentation 
 
 # 1.1.1
 
