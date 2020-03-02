@@ -1,5 +1,5 @@
 name: angular_redux
-version: 1.1.3
+version: 1.2.0
 homepage: https://github.com/ranquild/angular_redux
 description: Bindings to use Redux state management with Angular Dart components
 
