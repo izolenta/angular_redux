@@ -1,3 +1,11 @@
+# 1.2.2
+
+  * Use selector in SelectPipe example
+
+# 1.2.1
+
+  * Add SelectPipe example
+
 # 1.2.0
 
   * Add SelectPipe
