@@ -1,1 +1,1 @@
-export 'package:angular_redux/src/select_pipe.dart';
+export 'package:angular_redux/src/ng_store.dart';
