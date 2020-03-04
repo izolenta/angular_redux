@@ -1,3 +1,7 @@
+# 1.3.0
+
+  * Add optional comparer
+
 # 1.2.2
 
   * Use selector in SelectPipe example
