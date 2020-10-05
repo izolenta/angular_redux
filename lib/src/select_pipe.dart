@@ -20,7 +20,6 @@ class SelectPipe<T> implements PipeTransform, OnDestroy {
       _value = selector(_store.state);
       _selector = selector;
       _comparer = comparer;
-      print('transform');
       _subscription ??= _store.onChange.listen(_onStateChange);
     }
 
