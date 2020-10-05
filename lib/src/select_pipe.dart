@@ -20,19 +20,15 @@ class SelectPipe<T> implements PipeTransform, OnDestroy {
       _value = selector(_store.state);
       _selector = selector;
       _comparer = comparer;
-      _subscription?.cancel();
-      _subscription = _store.onChange.listen(_onStateChange);
+      print('transform');
+      _subscription ??= _store.onChange.listen(_onStateChange);
     }
 
     return _value;
   }
 
   @override
-  void ngOnDestroy() {
-    if (_subscription != null) {
-      _subscription.cancel();
-    }
-  }
+  void ngOnDestroy() => _subscription?.cancel();
 
   void _onStateChange(T state) {
     final dynamic value = _selector(state);
